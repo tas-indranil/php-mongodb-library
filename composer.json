@@ -1,0 +1,11 @@
+{
+    "require": {
+    "ext-mongo": "*",
+        "mongodb/mongodb": "^1.15"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mongo\\": "Mongo/"
+    }
+  }
+}
