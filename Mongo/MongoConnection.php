@@ -18,6 +18,12 @@ class MongoConnection
         $this->collection = $this->database->selectCollection($collection);
     }
 
+    /**
+     * @param $connection Mongodb connection string
+     * @param $database database name
+     * @param $collection collection or table name
+     * @return MongoConnection|null
+     */
     public static function getInstance($connection, $database, $collection): ?MongoConnection
     {
         if (self::$instance === null) {
