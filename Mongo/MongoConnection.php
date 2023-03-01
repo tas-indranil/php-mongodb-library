@@ -2,6 +2,8 @@
 
 namespace Mongo;
 use Mongo\Operation\MongoInsert;
+use Mongo\Operation\MongoRead;
+use Mongo\Operation\MongoUpdate;
 use MongoDB;
 
 class MongoConnection
@@ -19,6 +21,7 @@ class MongoConnection
     }
 
     /**
+     * Get a single instance connection
      * @param $connection Mongodb connection string
      * @param $database database name
      * @param $collection collection or table name
@@ -37,9 +40,9 @@ class MongoConnection
         return new MongoInsert($this->collection);
     }
 
-    public function update()
+    public function read()
     {
-
+        return new MongoRead($this->collection);
     }
 
     //------------------------------------------ private methods -----------------------------------------------------//

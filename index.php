@@ -34,14 +34,22 @@ $val = "mongodb://root:rootpassword@localhost:27017";
 //echo "Deleted document count: " . $result->getDeletedCount() . PHP_EOL;
 
 $values = MongoConnection::getInstance($val, 'logging', 'log_test');
-$inserts = $values->insert();
 
-$document = ['name' => 'indranil', 'age' => 34, 'place' => 'kolkata'];
-$documents = [
-    ['name' => 'John', 'age' => 25],
-    ['name' => 'Mary', 'age' => 30],
-    ['name' => 'Bob', 'age' => 40],
-];
+//$inserts = $values->insert();
+//$document = ['name' => 'indranil', 'age' => 34, 'place' => 'kolkata'];
+//$documents = [
+//    ['name' => 'John', 'age' => 25],
+//    ['name' => 'Mary', 'age' => 30],
+//    ['name' => 'Bob', 'age' => 40],
+//];
+////print_r($values->is_multidimensional($documents));
+//print_r($inserts->insert_many($documents));
+$results = [];
+$read = $values->read();
+$read_amount = $read->read_all('rabbitmqFields');
 
-//print_r($values->is_multidimensional($documents));
-print_r($inserts->insert_many($documents));
+//foreach ($read_amount as $document) {
+//    $results[] = $document->_id;
+//}
+
+print_r($read_amount);
