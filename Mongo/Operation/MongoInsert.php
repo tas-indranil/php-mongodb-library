@@ -24,7 +24,7 @@ class MongoInsert
     {
         try {
             // insert a document into the collection
-            $result = $this->collection->insertOne('John');
+            $result = $this->collection->insertOne($document);
             return "Inserted document with ID: " . $result->getInsertedId();
         } catch (MongoDB\Driver\Exception\Exception $e) {
             // handle the exception

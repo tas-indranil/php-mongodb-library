@@ -17,11 +17,16 @@ class MongoRead extends BaseMongoController
 
     public function read_all($type)
     {
-        $result = $this->collection->find();
-        $baseArrayField = $type;
-        if(Formatter::check_property_existsa($baseArrayField, $this))
+        $result = $this->collection->find([]);
+        if(count(($this->collection->find([]))->toArray()) > 0)
         {
-            return Formatter::format_read_data($this->$baseArrayField, $result);
+            $baseArrayField = $type;
+            if(Formatter::check_property_existsa($baseArrayField, $this))
+            {
+                return Formatter::format_read_data($this->$baseArrayField, $result);
+            }
+            return false;
         }
+        return false;
     }
 }

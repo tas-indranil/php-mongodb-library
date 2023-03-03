@@ -1,55 +1,42 @@
 <?php
+
 require_once 'vendor/autoload.php';
+
 use Mongo\MongoConnection;
 
-$val = "mongodb://root:rootpassword@localhost:27017";
+$faker = \Faker\Factory::create();
+$mongoClient = 'mongodb+srv://learnbuildnewskills:U7UOJOnC9rbwEBUR@cluster0.8u8l3.mongodb.net/?retryWrites=true&w=majority';
 
-//$mongoClient = new MongoDB\Client($val);
-//
-//// select a database
-//$database = $mongoClient->selectDatabase('logging');
-//
-//// select a collection
-//$collection = $database->selectCollection('log_test');
-
-// insert a document
-//$document = ['name' => 'indranil', 'age' => 34];
-//$result = $collection->insertOne($document);
-//echo "Inserted document with ID: " . $result->getInsertedId() . PHP_EOL;
-
-//// find a document
-//$query = ['name' => 'John'];
-//$document = $collection->findOne($query);
-//echo "Found document: " . print_r($document, true) . PHP_EOL;
-//
-//// update a document
-//$query = ['name' => 'John'];
-//$newValues = ['$set' => ['age' => 35]];
-//$result = $collection->updateOne($query, $newValues);
-//echo "Modified document count: " . $result->getModifiedCount() . PHP_EOL;
-//
-//// delete a document
-//$query = ['name' => 'John'];
-//$result = $collection->deleteOne($query);
-//echo "Deleted document count: " . $result->getDeletedCount() . PHP_EOL;
-
-$values = MongoConnection::getInstance($val, 'logging', 'log_test');
-
-//$inserts = $values->insert();
-//$document = ['name' => 'indranil', 'age' => 34, 'place' => 'kolkata'];
+$values = MongoConnection::getInstance($mongoClient, 'logging', 'log_test');
+//$insert_mongo = $values->insert();
 //$documents = [
-//    ['name' => 'John', 'age' => 25],
-//    ['name' => 'Mary', 'age' => 30],
-//    ['name' => 'Bob', 'age' => 40],
+//    ['name' => 'John', 'age' => 25 ,'place' => 'nyc'],
+//    ['name' => 'Mary', 'age' => 30 ,'place' => 'delhi'],
+//    ['name' => 'Bob', 'age' => 40 ,'place' => 'Kolkata'],
 //];
-////print_r($values->is_multidimensional($documents));
-//print_r($inserts->insert_many($documents));
-$results = [];
-$read = $values->read();
-$read_amount = $read->read_all('rabbitmqFields');
+//$insert_mongo->insert_many($documents);
 
-//foreach ($read_amount as $document) {
-//    $results[] = $document->_id;
+//$read_mongo = $values->read();
+//$read_amount = $read_mongo->read_all('rabbitmqFields');
+//print_r($read_amount);
+
+//for($i=0;$i<10;)
+//{
+//    $payload = [
+//        "name"          =>  $faker->name,
+//        "email"         =>  $faker->email,
+//        "message"       =>  $faker->text,
+//        "uuid"          =>  $faker->uuid(),
+//        "card_type"     =>  $faker->creditCardType(),
+//        "card_number"   =>  $faker->creditCardNumber($faker->creditCardType()),
+//        "file_name"      =>  $faker->mimeType(),
+//        "active_debt"   =>  $faker->boolean(),
+//        "api_version"   =>  $faker->semver()
+//    ];
+//    $documents[] = ["client_name" => "prime", "ip_address" => $faker->localIpv4(), "timestamp" => date("Y-m-d h:i:sa"), "payload" => $payload];
+//    $i++;
 //}
-
-print_r($read_amount);
+////$documents = ["client_name" => "prime", "ip_address" => $faker->localIpv4(), "timestamp" => date("Y-m-d h:i:sa"), "payload" => $payload];
+//$mongo_data = $values->insert();
+//$result = $mongo_data->insert_many($documents);
+//print_r($result);
