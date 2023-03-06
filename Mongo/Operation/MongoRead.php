@@ -29,4 +29,10 @@ class MongoRead extends BaseMongoController
         }
         return false;
     }
+
+
+    public function read_one($query)
+    {
+        return ($this->collection->find($query))->toArray();
+    }
 }
