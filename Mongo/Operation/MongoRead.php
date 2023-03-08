@@ -4,6 +4,7 @@ namespace Mongo\Operation;
 
 use Mongo\BaseMongoController;
 use Mongo\Helper\Formatter;
+use MongoDB\Exception\Exception;
 
 class MongoRead extends BaseMongoController
 {
@@ -33,6 +34,11 @@ class MongoRead extends BaseMongoController
 
     public function read_one($query)
     {
-        return ($this->collection->find($query))->toArray();
+        try {
+            return ($this->collection->find($query))->toArray();
+        }catch (Exception $e)
+        {
+            return "Error: ".$e->getMessage();
+        }
     }
 }
