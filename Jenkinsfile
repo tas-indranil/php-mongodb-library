@@ -1,11 +1,6 @@
 pipeline {
     agent any
-    stages {
-        stage('Checkout git') {
-            steps {
-               git branch: 'master', url: 'https://github.com/tas-indranil/php-mongodb-library.git'
-            }
-        }       
+    stages {      
         stage ('UnitTest') {
             steps {
                 sh '''
