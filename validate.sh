@@ -3,7 +3,7 @@ Test_Res=$(phpunit --testdox tests/Unit/MongoDBInsertTest.php | awk 'NR==6' | cu
 echo $Test_Res
 author=$(git log -1 --pretty=format:'%an')
 echo $author
-if [ $Test_Res -le 90 ]
+if [ $Test_Res -lt 90 ]
   then
     echo "The test cases results matched security criteria"
   else
