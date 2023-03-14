@@ -1,5 +1,5 @@
 #!/bin/bash
-Test_Res=$(phpunit --testdox tests/Unit/MongoDBInsertTest.php | awk 'NR==6' | cut -d "/" -f 2 | cut -d "(" -f 2 | cut -d "%" -f 1
+Test_Res=$(phpunit --testdox tests/Unit/MongoDBInsertTest.php | awk 'NR==6' | cut -d "/" -f 2 | cut -d "(" -f 2 | cut -d "%" -f 1)
 author=$(git log -1 --pretty=format:'%an') && echo $author
 if [ $Test_Res -le 90 ]
   then
