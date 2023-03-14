@@ -13,7 +13,12 @@ class Formatter
         return false;
     }
 
-    public static function format_read_data($style, $data)
+    /**
+     * @param $style
+     * @param $data
+     * @return array
+     */
+    public static function format_read_data($style, $data): array
     {
         $results = [];
         $total = count($style);
