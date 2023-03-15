@@ -3,7 +3,7 @@ Test_Res=$(phpunit --testdox | awk 'NR==6' | cut -d "/" -f 2 | cut -d "(" -f 2 |
 echo $Test_Res
 author=$(git log -1 --pretty=format:'%an')
 echo $author
-if [ "$Test_Res" -lt "90" ]
+if [ "$Test_Res" -lt "100" ]
   then
     echo "The test cases results matched security criteria"
   else
