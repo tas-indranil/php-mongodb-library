@@ -35,7 +35,7 @@ class MongoRead extends BaseMongoController
     public function read_one($query)
     {
         try {
-            return ($this->collection->find($query));
+            return ($this->collection->find($query))->toArray();
         }catch (Exception $e)
         {
             return "Error: ".$e->getMessage();
